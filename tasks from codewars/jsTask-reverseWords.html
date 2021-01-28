@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function reverseWords(str) {
+      let i = 0;
+      let wordsArr = str.split(" ");
+      let reversePhrase = "";
+      let m = wordsArr.length;
+      let word;
+      while (i < m) {
+        wordsArr[i] = wordReverse(wordsArr[i]);
+
+        i = i + 1;
+      }
+      return wordsArr;
+    }
+
+    function wordReverse(word) {
+      return word.split('').reverse().join('');
+    }
+
+    console.log(reverseWords("Should pass"));
+  </script>
+</body>
+
+</html>

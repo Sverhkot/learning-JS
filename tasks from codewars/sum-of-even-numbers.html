@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      function evenNumbers(arr) {
+        let i = 0;
+        let n = arr.length;
+        let sumEven = 0;
+        let sumOdd = 0;
+        // while (i < n) {
+        //   if (arr[i] % 2 === 0) {
+        //     sumEven = sumEven + arr[i];
+        //   } else {
+        //     sumOdd = sumOdd + arr[i];
+        //   }
+        //   i = i + 1;
+        // }
+        // return {
+        //   sumEven: sumEven,
+        //   sumOdd: sumOdd,
+        // };
+        // do {
+        //   if (arr[i] % 2 === 0) {
+        //     sumEven = sumEven + arr[i];
+        //   } else {
+        //     sumOdd = sumOdd + arr[i];
+        //   }
+
+        //   i = i + 1;
+        // } while (i < n);
+        // return {
+        //   Even: sumEven,
+        //   Odd: sumOdd,
+        // };
+
+        // arr.forEach(function (x) {
+        //   if (x % 2 === 0) {
+        //     sumEven = sumEven + x;
+        //   } else {
+        //     sumOdd = sumOdd + x;
+        //   }
+        // });
+
+        // return {
+        //   Even: sumEven,
+        //   Odd: sumOdd,
+        // };
+
+        // for (; i < n; i += 1) {
+        //   if (arr[i] % 2 === 0) {
+        //     sumEven = sumEven + arr[i];
+        //   } else {
+        //     sumOdd = sumOdd + arr[i];
+        //   }
+        // }
+        // return {
+        //   Even: sumEven,
+        //   Odd: sumOdd,
+        // };
+
+        var obj = {
+          a: 1,
+          b: 2,
+          c: 3,
+        };
+
+        // obj.forEach(function (x) {
+        Object.keys(obj).forEach(function (x) {
+          console.log(obj[x]);
+        });
+        // });
+        // for (var prop of arr) {
+        //   console.log(prop);
+        // }
+      }
+
+      let foo = evenNumbers([2, 1, 23, 3, 11]);
+      console.log(foo);
+    </script>
+  </body>
+</html>

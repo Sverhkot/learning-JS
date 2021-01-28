@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      function prefill(n, v) {
+        if (n === 0 || n === '0') {
+          return [];
+        }
+
+        if (numb(n) === false) {
+          throw new TypeError(n + ' is invalid');
+        }
+
+        n = +n;
+
+        return [v].concat(prefill(n - 1, v));
+      }
+
+      function numb(x) {
+        if (!Number.isInteger(x) || x < 0) {
+          return false;
+        }
+        return !isNaN(x);
+      }
+      console.log(prefill('4'));
+      // function sum(n) {
+      //   if (n === 0) {
+      //     return 0;
+      //   } else {
+      //     return n + sum(n - 1);
+      //   }
+      // }
+
+      // function fact(n) {
+      //   if (n === 0) {
+      //     return 1;
+      //   } else {
+      //     return n * fact(n - 1);
+      //   }
+      // }
+      // console.log(fact(3));
+    </script>
+  </body>
+</html>

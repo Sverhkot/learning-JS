@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<style>
+    .checkmark {
+    width: 12px;
+    height: 12px;
+    margin: 7px;
+    }
+</style>
+
+<body>
+  <div id="myList">
+    <p class="list"><input type="checkbox" class="checkmark"><span>Желтый</span></p>
+    <p class="list"><input type="checkbox" class="checkmark"><span>Красный</span></p>
+    <p class="list"><input type="checkbox" class="checkmark"><span>Синий</span></p>
+  </div>
+
+  <input type="text" class="enter">
+  <button class="buttonAdd" onclick="myFunction()">Добавить</button>
+
+  <script>
+
+    function myFunction() {
+      let newElement = document.getElementsByClassName("enter")[0];
+      let node = document.createElement("p");
+      node.textContent = newElement.value;
+      myList.append(node);
+    }
+
+    </script>
+
+</body>
+
+</html>

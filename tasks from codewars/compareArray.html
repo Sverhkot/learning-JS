@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      function comp(arr1, arr2) {
+        let i = 0;
+        let square;
+        let indexInArr2;
+        let same = true;
+        if (arr1 === null || arr2 === null) {
+          return false;
+        }
+        let n = arr1.length;
+        while (i < n) {
+          square = arr1[i] * arr1[i];
+          indexInArr2 = arr2.indexOf(square);
+          if (indexInArr2 === -1) {
+            return false;
+          }
+          arr2.splice(indexInArr2, 1);
+          i = i + 1;
+        }
+
+        return same;
+      }
+      console.log(comp([2, 3, 4, 5, 2], [4, 9, 16, 25, 4]));
+    </script>
+  </body>
+</html>

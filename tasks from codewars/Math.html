@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function mathRound(number) {
+        let str = number.toString().split('.');
+        if (str.length === 1) return +str[0];
+        let first = +str[0];
+        let second = str[1];
+        second = second.split('');
+        if (second[0] <= 4) return first;
+        if (second[0] >= 5) return first + 1;
+      }
+
+      function mathCeil(number) {
+        if (number.toString().split('.').length === 1)
+          return +number.toString().split('.')[0];
+        return +number.toString().split('.')[0] + 1;
+      }
+
+      function mathFloor(number) {
+        let str = number.toString().split('.');
+        console.log(str);
+        return +str[0];
+      }
+      console.log(mathRound(2.0));
+      // Короткое решение
+      // Math.floor = number => parseInt(number);
+      // Math.round = number => Math.floor(number + 0.5)
+      // Math.ceil  = number => Number.isInteger(number) ? number : Math.floor( number + 1 )
+    </script>
+  </body>
+</html>

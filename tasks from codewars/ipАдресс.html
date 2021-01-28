@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      function ipToInt32(ip) {
+        let i = 0;
+        let j = 0;
+        let ipItem = ip.split('.');
+        let arr = [];
+        let bin = 0;
+
+        while (i < ipItem.length) {
+          bin = ipItem[i] * 1;
+          bin = bin.toString(2);
+          i = i + 1;
+          arr.push(bin);
+          while (j < arr.length) {
+            while (arr[j].length < 8) {
+              arr[j] = '0' + arr[j];
+            }
+            j = j + 1;
+          }
+        }
+        arr = arr.join('');
+
+        let parse = parseInt(arr, 2);
+        return parse;
+      }
+
+      console.log(ipToInt32('128.32.10.1'));
+    </script>
+  </body>
+</html>

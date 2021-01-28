@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function sum(a, ...theArgs) {
+      //   return theArgs.reduce(
+      //     (accumulator, currentValue) => accumulator + currentValue,
+      //     a,
+      //   );
+      // }
+
+      function doubleTheValue(val) {
+        console.log(val);
+        return val * 2;
+      }
+      function addOneToTheValue(val) {
+        return val + 1;
+      }
+      // function compose(value, func1, func2) {
+      //   let result1 = func1(value);
+      //   let result2 = func2(result1);
+      //   return result2;
+      // }
+
+      // console.log(compose(5, doubleTheValue));
+      // console.log(compose(5, addOneToTheValue));
+      // [1, 2, 3].reduce(function (index, item) {}, accumulator);
+      // [1, 2, 3].reduce(callback(accum, item) =>(), 0);
+      // console.log(compose(5, doubleTheValue, addOneToTheValue)); // should === 11)
+      function compose(val, ...theArgs) {
+        return theArgs.reduce((accum, item) => (accum = item(accum)), val);
+      }
+      console.log(compose(5, doubleTheValue, addOneToTheValue));
+    </script>
+  </body>
+</html>

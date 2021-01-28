@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>События в JS</title>
+    <style>
+      #one {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <body onload="alert('Страница загружена'); loadedJS()"></body>
+    <input
+      type="button"
+      name="b"
+      value="click me"
+      onclick="buttonClick(this)"
+    />
+    <span onmouseover="counter(this)">На этот текст навели 0 раз</span>
+    Этот блок о событиях мыши из второго видео. Здесь при помомщи события
+    onclick элемент с id one будет перекрашен в другой цвет -->
+    <div id="one"></div>
+
+    <script>
+      // События - те действия, которые происходят в момент нажатия/наведения или др. на определенные объекты
+      // Собития рассмотреные в этом файле: onclick(когда кликнули на элемент), onload(когда страничка загрузится), onmouseover(когда курсор оказывается над элементом)
+      // В данном случае я создала кнопку и "повесила" на нее событие onclick, а в кавычках указала функцию, которую создала для этого события
+      // При нажатии на кнопку бутет выполняться функция, которую я написала ниже и, как результат, на экране появится уведомление с текстом "Вы нажали на кнопку"
+
+      // function buttonClick(button) {
+      //   alert(
+      //     'Вы нажали на кнопку. Кнопка имеет имя ' +
+      //       button.name +
+      //       ', так же value = ' +
+      //       button.value,
+      //   );
+      // }
+
+      // // Это ЗАМЫКАНИЕ.
+      // // Событие которое происходит при наведении курсором на элемент
+      // let count = 0;
+      // function counter(element) {
+      //   count = count + 1;
+      //   element.innerHTML = 'На этот текст навели ' + count + ' раз';
+      // }
+
+      // второй блок про события мыши:
+
+      // вешаем событие клик мышью
+      let block = document.getElementById('one');
+      block.onclick = function () {
+        console.log('onclick');
+        this.style.background = 'green';
+        this.onclick = null;
+        //Двойной клик
+        block.ondblclick = function () {
+          this.style.background = 'red';
+        };
+      };
+
+      // клик правой кнопкой мыши
+      // block.oncontextmenu = function () {
+      //   this.style.background = 'black';
+      //   // Запретить вызывать контекстное меню на элементе block
+      //   // return false;
+      //   // Запретить вызов контекстного меню на всей странице
+      //   // document.oncontextmenu = function(){
+      //   //  return false;
+      //   // }
+      // };
+      // Событие onmouseenter - событие, когда мышь входит на элемент
+      // block.onmouseenter = function () {
+      //   console.log('in!!!');
+      //   this.style.background = 'gold';
+      // };
+
+      // Событие onmouseleave, когда мышь уходит с элемента
+      // block.onmouseleave = function () {
+      //   this.style.background = 'orange';
+      // };
+
+      // движение мышью внутри блока
+      // let a = 0;
+      // block.onmousemove = function () {
+      //   a++;
+      //   this.style.width = 100 + a + 'px';
+      // };
+
+      // событие onmousedown - происходит когда нажимаем и держим кнопку мыши (любую)
+      // block.onmousedown = function () {
+      //   this.style.background = 'cyan';
+      //   // так можно посмотреть какая кнопка мыши была нажата: 0 - левая, 1 - колесико, 2 - правая
+      //   // console.log('button:' + event.button);
+      //   // console.log('which:' + event.which);
+      // };
+
+      // Событие onmouseup работает когда кнопку мыши отпускают
+      block.onmouseup = function () {
+        this.style.background = 'pink';
+      };
+    </script>
+  </body>
+</html>

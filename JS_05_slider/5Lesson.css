@@ -1,0 +1,30 @@
+/* Картинки отображаются как inline элемент
+Ширина между inline элементми составляет 4px! */
+
+#slider {
+  width: 384px;
+  height: 128px;
+  border: 5px solid black;
+  margin: 50px auto;
+  /* Накладываю ограничение на слайдер */
+  overflow: hidden;
+}
+
+#strip {
+  width: 768px;
+  position: relative;
+  /* transition позволяет замедлить эффект
+  После загрузки первый элемент двигается рывкомб чтобы такого небыло необходимо прописать свойство left = 0 */
+  left: 0;
+  transition: all ease 1s;
+}
+#strip img {
+  float: left;
+}
+/* float: left выстроит картинкаи в один ряд.
+Способ представленный ниже позволяет "очистить поток" и растянуть родителя по высоте всплывших элементов*/
+#strip::after {
+  content: "";
+  display: block;
+  clear: both;
+}

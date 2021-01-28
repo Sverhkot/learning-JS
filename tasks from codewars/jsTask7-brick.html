@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <script>
+
+    function isPass(L1, L2, x, y) {
+      if ((L1 < y && L2 < x) || (L1 < x && L2 < y)) {
+        return true;
+      }
+      
+      return false;
+    }
+
+    
+     const isPass = (L1, L2, x, y) => {
+      if ((L1 < y && L2 < x) || (L1 < x && L2 < y)) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+  const isPass = function(L1, L2, x, y) {
+      if ((L1 < y && L2 < x) || (L1 < x && L2 < y)) {
+        return true;
+      }
+      
+      return false;
+    }
+
+
+  
+    let widthBrick = +prompt("Введите ширину кирпича");
+		let lenghtBrick = +prompt("Введите длинну кирпича");
+		let heightBrick = +prompt("Введите высоту кирпича");
+		let x = +prompt("Введите ширину отверстия");
+		let y = +prompt("введите длинну отверстия");
+    
+    if (isPass(widthBrick, heightBrick, x, y)){
+      alert("Кирпич проходит в отверстие");
+    } else if( isPass(lenghtBrick, widthBrick, x, y) ) {
+      alert("Кирпич проходит в отверстие");
+    } else if (isPass(lenghtBrick, heightBrick, x, y)) {
+      alert("Кирпич проходит в отверстие");
+    } else alert("кирпич не проходит в отверстие");
+
+
+
+
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

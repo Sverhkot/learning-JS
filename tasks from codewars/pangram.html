@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isPangram(string) {
+        let str = string.toLowerCase();
+        let alphabet = [];
+        let sum = 0;
+        let pangram = true;
+        for (let i = 97; i <= 122; i++) {
+          let getSymbol = String.fromCharCode(i);
+          alphabet.push(getSymbol);
+        }
+        let i = 0;
+        for (let i = 0; i < alphabet.length; i++) {
+          if (str.indexOf(alphabet[i]) === -1) {
+            pangram = false;
+          }
+        }
+        return pangram;
+      }
+      console.log(isPangram('The quick brown fox jumps over the lazy dog.'));
+    </script>
+  </body>
+</html>

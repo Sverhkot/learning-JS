@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function max(arr) {
+      let i = 1;
+      let maxElem = arr[0];
+      while (i < arr.length) {
+        if (maxElem < arr[i]) {
+          maxElem = arr[i];
+        }
+        i = i + 1;
+      }
+      return maxElem
+    }
+
+    console.log(max([1, 2, 3, 4, 5, 6, 7, 8, 10, 9]))
+  </script>
+</body>
+
+</html>

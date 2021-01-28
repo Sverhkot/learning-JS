@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+
+    function bouncingBall(h, bounce, window) {
+      let mom_sees_the_ball = 1;
+      let jumpHeight = h*bounce;
+      if (h > 0 && bounce > 0 && bounce < 1 && window < h) {
+        while (jumpHeight > window) {
+          mom_sees_the_ball += 2;
+          jumpHeight = jumpHeight*bounce;
+        } 
+      } else return -1;
+
+      return mom_sees_the_ball;
+    }
+    console.log(bouncingBall(1000, 0.66, 1.5));
+  </script>
+</body>
+
+</html>

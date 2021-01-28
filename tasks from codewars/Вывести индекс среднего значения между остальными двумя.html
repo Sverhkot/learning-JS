@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    let gimme = function(inputArray) {
+
+      let i = 0;
+
+      if((inputArray[1] < inputArray[0] && inputArray[0] < inputArray[2]) || (inputArray[2]<inputArray[0] && inputArray[0] < inputArray[1])) {
+        return i = 0;
+      }
+      if((inputArray[0] < inputArray[1] && inputArray[1] < inputArray[2]) || (inputArray[2] < inputArray[1] && inputArray[1] < inputArray[0])){
+        return i = 1;
+      }
+      if((inputArray[0] < inputArray[2] && inputArray[2] < inputArray[1]) || (inputArray[1] < inputArray[2] && inputArray[2] < inputArray[0])) {
+        return i = 2;
+      }
+    }
+    console.log(gimme([1, 2, 3]))
+/*function gimme(a) {
+  return a.indexOf(a.concat().sort(function(a, b) { return a - b })[1])
+}*/
+  </script>
+</body>
+
+</html>

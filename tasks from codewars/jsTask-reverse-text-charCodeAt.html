@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function reverseLetter(str) {
+      let i = 0;
+      let n = str.length;
+      let newArr = [];
+      let reversed;
+      let s;
+      let code;
+
+      while (i < n) {
+        a = str.charCodeAt(i);
+        if ((a >= 65 && a <= 90) || (a >= 97 && a <= 122)) newArr.push(str[i]);
+        i = i + 1;
+      }
+      reversed = newArr.reverse();
+      s = reversed.join("");
+
+      return s;
+    }
+    console.log(reverseLetter('krish21?/An'));
+
+  </script>
+</body>
+
+</html>

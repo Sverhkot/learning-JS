@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+  function validate(password) {
+  return /\d+/.test(password) &&
+    /[a-z]+/.test(password) &&
+    /[A-Z]+/.test(password) &&
+    /^[A-Za-z\d!@#$%^&*]{6,}$/.test(password)
+  }  
+
+    console.log(validate("djI38D55"))
+
+  </script>
+</body>
+
+</html>

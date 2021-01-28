@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      // function digitsSum(number) {
+      //   return number
+      //     .toString()
+      //     .split('')
+      //     .reduce((acum, item) => acum + +item, 0);
+      // }
+
+      // function isIncreasing(number) {
+      //   let strNumber = number.toString();
+      //   let n = strNumber.length;
+      //   for (let i = n - 1; i > 0; i--) {
+      //     if (+strNumber[i] < +strNumber[i - 1]) {
+      //       return false;
+      //     }
+      //   }
+      //   return true;
+      // }
+
+      // function digitsSum(number) {
+      //   if (number === 0) return 0;
+      //   let digit = number % 10;
+      //   let lft = Math.floor(number / 10);
+
+      //   return digit + digitsSum(lft);
+      // }
+
+      function digitsSum(num) {
+        let res = 0;
+        while (num > 0) {
+          const last = num % 10;
+          res += last;
+          num -= last;
+          num /= 10;
+        }
+        return res;
+      }
+
+      function isIncreasing(number) {
+        let digit = number % 10;
+        let numb = Math.floor(number / 10);
+
+        while (numb > 0) {
+          if (numb % 10 > digit) {
+            return false;
+          }
+
+          digit = numb % 10;
+          numb = Math.floor(numb / 10);
+        }
+        return true;
+      }
+
+      function findAll(n, k) {
+        let arr = [];
+        let arrResult = [];
+        let i = 0;
+        let first = Math.pow(10, k - 1);
+        let last = Math.pow(10, k) - 1;
+
+        for (let numb = first; numb <= last; numb++) {
+          let firstd = Math.floor(numb / first);
+          let lastd = numb % 10;
+          if (first > last) {
+            next;
+          }
+          if (digitsSum(numb) === n && isIncreasing(numb)) {
+            i = i + 1;
+            arr.push(numb);
+          }
+        }
+        let j = arr.length;
+        if (j === 0) {
+          return [];
+        }
+
+        arrResult[0] = i;
+        arrResult[1] = arr[0].toString();
+        arrResult[2] = arr[j - 1].toString();
+        return arrResult;
+      }
+
+      console.log(findAll(10, 3));
+    </script>
+  </body>
+</html>

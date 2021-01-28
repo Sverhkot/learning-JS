@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+<body>
+	<p id="out"></p>
+<script>
+
+  let N = +prompt("введите количество строк в массиве");
+  let M = +prompt("введите количество столбцов в массиве");
+  let max = +prompt("введите максимальное случайное число");
+  let i = 0;
+  let j = 0;
+  let a = [];
+  a[i] = [];
+  let s = 0;
+  while (i < N && j < M) {
+     a[i][j] = Math.floor(Math.random()* (max+1));
+     s = s + a[i][j];
+     j = j + 1;
+  if (!(j < M)) {
+    i = i + 1;
+    a[i] = [];
+    j = 0;
+  }
+}
+console.log(a);
+console.log(s);
+
+</script>
+
+</body>
+</html>

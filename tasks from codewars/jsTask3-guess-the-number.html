@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+<body>
+	<p id="out"></p>
+<script>
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+    let x = getRndInteger(0,101);
+	let i = 1;
+    let a = -1;
+ while (a !== x && i <= 10) {
+    a = +prompt("введите a ");
+   
+   if (a === x) {
+    alert("Случайное число = " + x);
+    } else {
+      if ( a > x ) {
+        alert("Ваше число больше загаданного");
+        
+      } else {
+        alert("Ваше число меньше загаданного");
+      }
+   }
+   i = i + 1;
+ }
+
+
+</script>
+
+</body>
+</html>

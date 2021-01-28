@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      function isPrime(numb) {
+        for (let i = 2; i < numb; i++) {
+          if (numb % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function minimumNumber(arr) {
+        let n = arr.length;
+        let sum = 0;
+        let j = 0;
+
+        for (let i = 0; i < n; i += 1) {
+          sum = sum + arr[i];
+        }
+        // сумму можно еще посчитать вот так:
+        // sum = numbers.reduce((a,b) => a+b);
+
+        while (!isPrime(sum + j)) {
+          j = j + 1;
+        }
+        return j;
+      }
+      console.log(minimumNumber([50, 39, 49, 6, 17, 28]));
+    </script>
+  </body>
+</html>

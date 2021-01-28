@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function alphabetPosition(text) {
+      let m = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+      let i = 0;
+      let x;
+      let s = "";
+      let n = text.length;
+      let lowerText = text.toLowerCase();
+      while (i < n) {
+
+        x = m.indexOf(lowerText[i]) + 1;
+        i = i + 1;
+        if (x !== 0 ) {
+          if (s.length === 0) {
+            s = s + x;
+          } else {
+            s += " " + x;
+          }
+        }
+      }
+      return s;
+    }
+
+
+    console.log("|" + alphabetPosition("The sunset sets at twelve o' clock...") + "|" )
+
+  </script>
+</body>
+
+</html>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>  	  
+
+<body>
+  <script>
+    function reverseLetter(str) {
+      let letter = ['a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T', 'u', 'U', 'v', 'V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z']
+      let i = 0;
+      let x;
+      let n = str.length;
+      let newArr = [];
+      let reversed;
+      let s;
+
+      while (i < n) {
+
+        x = letter.indexOf(str[i]) + 1;
+        if (x !== 0) {
+          newArr.push(str[i]);
+        }
+        i = i + 1;
+      }
+      reversed = newArr.reverse();
+      s = reversed.join("");
+      return s;
+    }
+    console.log(reverseLetter('krish21?/An'))
+
+
+  </script>
+</body>
+
+</html>

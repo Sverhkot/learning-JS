@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function friend(friends) {
+      let i = 0;
+      let listOfNames = friends.length;
+      let myFriends = [];
+      while (i < listOfNames) {
+        let n = friends[i].length;
+        debugger;
+        if (n === 4){
+          myFriends.push(friends[i])
+        }
+        i = i + 1;
+      }
+      return myFriends; 
+    }
+    console.log(friend(["Ryan", "Kieran", "Mark"]));
+  </script>
+</body>
+
+</html>

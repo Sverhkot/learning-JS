@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    /*function findNextSquare(sq) {
+      let root = Math.sqrt(sq);
+      let perfectSquare; 
+      let whole = root * 10
+      let remainder = whole % 10;
+      if (remainder === 0) {
+        perfectSquare = root + 1;
+        perfectSquare = Math.pow(perfectSquare, 2)
+      } else return -1;
+    return perfectSquare;
+  }*/
+  function findNextSquare(sq) {
+      let root = Math.sqrt(sq);
+      let perfectSquare; 
+      let whole = Math.floor(root)
+  
+      if (root === whole) {
+        perfectSquare = root + 1;
+        perfectSquare = Math.pow(perfectSquare, 2)
+      } else return -1;
+    return perfectSquare;
+    
+  }
+  console.log(findNextSquare(625));
+    // Return the next square if sq is a perfect square, -1 otherwise
+  </script>
+</body>
+
+</html>

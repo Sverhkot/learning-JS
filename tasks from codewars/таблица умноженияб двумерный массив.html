@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function multiplicationTable(size) {
+      //блок в котором объявляем массив размером size X size
+      let a = new Array(size);
+      for (let i = 0; i < size; i++) {
+        a[i] = new Array(size);
+      }
+      //заполняем массив
+      for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+          a[i][j] = (i + 1) * (j + 1);
+        }
+      }
+      return a;
+    }
+
+    console.log(multiplicationTable(3))
+  </script>
+</body>
+
+</html>

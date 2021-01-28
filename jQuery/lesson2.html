@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>jQuery</title>
+    <style>
+      button {
+        margin-left: 20px;
+      }
+      .box {
+        background-color: blueviolet;
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+      }
+      .blue {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        // СОБЫТИЯ
+        // клики мышью click dblclick
+        // $("button").click(function () {
+        //   alert("ты кликнул по кнопке");
+        // });
+        // двойной клик
+        // $("button").dblclick(function () {
+        //   $(this).toggleClass("blue");
+        // });
+        // курсор над элементом
+        // $(".box").mouseenter(function (e) {
+        //   $(this).css("background-color", "green");
+        //   console.log(e.target);
+        // });
+        // $(".box").mouseleave(function (e) {
+        //   $(this).css("background-color", "blueviolet");
+        // });
+        $(".box").click(function (e) {
+          $(e.target).css("background-color", "green");
+          console.log(e.target);
+        });
+      });
+    </script>
+    <div class="ff">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <button class="btn">click me</button>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+    function validatePIN(pin) {
+      let length = pin.length;
+      let i = 0;
+      let correct = true;
+
+      while (i < length) {
+        let a = pin.charCodeAt(i);
+        // if ((a >= 0 && a <= 47) || (a >= 65 && a <= 127) || (a >= 58 && a <= 64) || (a >= 188 && a <= 190)) {
+        //   correct = false;
+        // }
+        if (a < 48 || a > 57) {
+          correct = false;
+        }
+        i = i + 1;
+      }
+
+      if (!(length === 4 || length === 6)) {
+        correct = false;
+      }
+
+      return correct;
+    }
+    console.log(validatePIN("09876"))
+  </script>
+</body>
+
+</html>

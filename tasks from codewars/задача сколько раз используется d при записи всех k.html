@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+
+    function nbDig(n, d) {
+      let i = 0;
+      let j = 0;
+      let y = 0;
+      let x;
+      let arrayOfNumbersN = [];
+      let arrayOfSquaresK = [];
+      let k;
+      
+
+      while (i <= n) {
+        arrayOfNumbersN.push(i);
+        i = i + 1;
+      }
+
+      let N = arrayOfNumbersN.length;
+
+      while (j < N) {
+        k = Math.pow(arrayOfNumbersN[j], 2);
+        arrayOfSquaresK.push(k);
+        j = j + 1;
+      }
+      let sum = 0;
+      while ( y < arrayOfSquaresK.length){
+        sum += lastDigit(arrayOfSquaresK[y], d);
+        y = y + 1;
+
+      }
+      return sum;
+    }
+
+    
+    function lastDigit(n, d) {
+      let x;
+      let j = 0;
+
+      if (n === 0 && d === 0){
+        j = j + 1;
+      }
+
+      while (n > 0) {
+        x = n % 10;
+        if ( x === d ) {
+          j = j + 1;
+        }
+        n = Math.floor(n / 10);
+        
+      }
+      return j;
+    }
+    console.log(lastDigit(159821, 1) )
+
+  </script>
+</body>
+
+</html>

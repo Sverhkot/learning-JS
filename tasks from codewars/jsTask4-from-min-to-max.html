@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+<body>
+	<p id="out"></p>
+<script>
+
+  let N = +prompt("введите количество элементов массива");
+  let i = 0;
+  let m = [];
+  while (i < N) {
+     m[i] = +prompt("введите m["+ i +"]");
+     i = i + 1;
+    }
+  i = 0; 
+  while (i + 1 < N) {
+      if (m[i + 1] > m[i]) {
+      out.innerHTML += m[i + 1] + " ";
+    }
+    i = i + 1;
+
+  }
+
+</script>
+
+</body>
+</html>

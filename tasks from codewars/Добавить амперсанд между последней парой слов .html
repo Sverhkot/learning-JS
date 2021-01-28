@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script>
+ 
+    function list(names) {
+
+
+      if (names.length === 0){
+        return '';
+      }
+
+      let stringNames = names.map((elem) => { return elem['name'] });
+
+      let listNames = stringNames.reduce(function(accumulator, value, index) {
+        let wtuka = ", ";
+
+        if (index === stringNames.length - 1) {
+        wtuka = " & ";
+        }
+        return accumulator + wtuka + value;
+      });
+      return listNames;
+    }
+
+    console.log(list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ]));
+    /*function list(names) {
+      let i = 1;
+      let n = names.length;
+      if (n === 0) {
+        return '';
+      }
+
+      let listNames = names[0];
+      while (i < n-1) {
+        listNames +=  ", " + names[i];
+        i = i + 1;
+
+      }
+      if (n !== 1) {
+      listNames += ' & ' + names[n-1];
+    }
+
+      return listNames
+
+    }
+    console.log(list([]))*/
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title>snake</title>
+    <style>
+      #example {
+        /* margin: 100px 100px 100px 100px; */
+        margin: 5% 35%;
+        border: 4px solid black;
+        position: absolute;
+      }
+      .message {
+        display: none;
+        background-color: white;
+        border: 4px solid black;
+        width: 320px;
+        height: 320px;
+        /* margin: 100px 100px 100px 100px; */
+        margin: 5% 35%;
+        position: absolute;
+      }
+      span {
+        display: block;
+        text-align: center;
+        /* color: #fb8500; */
+        color: black;
+        font-family: "Press Start 2P", cursive;
+        font-size: 28px;
+        padding-top: 125px;
+        padding-bottom: 15px;
+      }
+      .restart {
+        border: 4px solid black;
+        background-color: #fb8500;
+        width: 207px;
+        margin-left: 55px;
+        padding: 5px;
+        color: white;
+        font-family: "Press Start 2P", cursive;
+      }
+      .restart:active,
+      .restart:hover {
+        border: 4px solid black;
+        background-color: #55a630;
+        color: black;
+      }
+      .start-game {
+        display: block;
+        /* background-color: #fb8500; */
+        background-color: #55a630;
+        border: 4px solid black;
+        width: 320px;
+        height: 320px;
+        /* margin: 100px 100px 100px 100px; */
+        margin: 5% 35%;
+        position: absolute;
+      }
+      .start {
+        border: 4px solid black;
+        background-color: #55a630;
+        width: 207px;
+        margin-left: 55px;
+        padding: 5px;
+        color: white;
+        font-family: "Press Start 2P", cursive;
+      }
+
+      .start:active,
+      .start:hover {
+        border: 4px solid black;
+        background-color: #fb8500;
+        color: black;
+      }
+      audio {
+        position: absolute;
+        margin: 10px;
+      }
+      p {
+        padding: 5px;
+        position: absolute;
+        font-family: "Press Start 2P", cursive;
+        font-size: 11px;
+        margin: 15px;
+        margin-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio controls preload="auto" loop>
+      <source src="GravityBass.mp3" type="audio/mpeg" />
+    </audio>
+    <p>
+      Здесь можно включить прикольный тречок:)<br />
+      Это так, для атмосферы ;)
+    </p>
+
+    <!-- Для начала необходимо создать игровое поле. Тег  canvas идеально для этого подходит-->
+    <canvas height="320" width="320" id="example"> Обновите браузер </canvas>
+    <!-- Это поле -заготовка. Оно появится на месте игрового в момент проигрыша -->
+    <div class="message">
+      <span> GAME OVER </span>
+      <button class="restart">try again</button>
+    </div>
+    <!-- Это поле -заготовка. Оно появится на месте игрового поля в начале игры -->
+    <div class="start-game">
+      <span> SNAKE </span> <button class="start">click to start</button>
+    </div>
+
+    <script>
+      // Здесь я получаю элемент с id "example" - это игровое поле
+      let example = document.getElementById("example");
+      // Метод getContext("2d") создает CanvasRenderingContext2D, представляющий двумерный контекст;
+      let ctx = example.getContext("2d");
+      // Здесь я указываю цвета для фона и самой змейки
+      const bgColor = "#ffffff";
+      const rectColor = "#55a630";
+      const rectRandomColor = "#fb8500";
+      // Это свойство (fillStyle) задает цвет или стиль, используемый при заливке фигур
+      // Сперва "заливаю" фон
+      ctx.fillStyle = bgColor;
+      // А потом квадратик со змейкой с координатами начала - 0,0 и координатами конца - example.width, example.height
+      ctx.fillRect(0, 0, example.width, example.height);
+      // Это стартовое положение и длинна змейки
+      // В процессе игры координаты будут меняться, как и их количество
+      let arr = [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+      ];
+      let randomArr = [];
+      let direction = "right";
+      let score = 0;
+      // ----------------------------------------------------------------------------------
+      // ОСНОВНЫЕ ФУНКЦИИ
+
+      // Эта функция отвечает за закрашивание квадратов змейки
+      // Если drow = true, то квадрат закрашивается цветом туловища змейки
+      // Если drow = false, то квадрат закрашивается цветом фона игрового поля
+
+      function rect(x, y, drow = true) {
+        const rectSize = 19;
+        if (drow) {
+          ctx.fillStyle = rectColor;
+        } else {
+          ctx.fillStyle = bgColor;
+        }
+        ctx.fillRect(x * rectSize + x, y * rectSize + y, rectSize, rectSize);
+      }
+
+      function coordinates(arr) {
+        let head = arr[arr.length - 1];
+        let x, y;
+        if (direction === "left") {
+          x = head[0] - 1;
+          y = head[1];
+        }
+        if (direction === "right") {
+          x = head[0] + 1;
+          y = head[1];
+        }
+        if (direction === "down") {
+          x = head[0];
+          y = head[1] + 1;
+        }
+        if (direction === "up") {
+          x = head[0];
+          y = head[1] - 1;
+        }
+        return [x, y];
+      }
+
+      function rectRandom(x, y) {
+        const rectSize = 19;
+        ctx.fillStyle = rectRandomColor;
+        ctx.fillRect(x * rectSize + x, y * rectSize + y, rectSize, rectSize);
+      }
+
+      // Здесь я объявляю функцию, которая перемещает змейку таким образом: сперва добавляет квадрат "к голове" в массив с координатами змейки и убирая последний "с хвоста"
+      function move(x, y) {
+        arr.push([x, y]);
+        rect(x, y);
+
+        let tail = arr[0];
+        let tx = tail[0];
+        let ty = tail[1];
+        rect(tx, ty, false);
+        arr.shift();
+      }
+
+      // Эта функция отвечает за "наращивания" квадрата в хвосте змейки при поедании
+      function eating(x, y) {
+        let tail = arr[0];
+        let tx = tail[0];
+        let ty = tail[1];
+        rect(tx, ty);
+        arr.unshift([tx, ty]);
+        fillRandomRect();
+      }
+
+      // Эта функция выводит сообщение "game over" в случае если змейка наезжает сама на себя
+      function bite(x, y) {
+        for (let i = 0; i < arr.length; i++) {
+          if (x === arr[i][0] && y === arr[i][1]) {
+            $(".message").show();
+          }
+        }
+      }
+
+      // Эта функция генерирует случайную координату для квадрата, который змейка должна сьесть
+      function getRandom() {
+        let rx = Math.floor(Math.random() * 16);
+        let ry = Math.floor(Math.random() * 16);
+        console.log(rx, ry);
+        return [rx, ry];
+      }
+
+      // Здесь проверяем находится ли случайный квадрат на змейке
+      function isRectOnSnake() {
+        for (let i = 0; i < arr.length; i++) {
+          if (JSON.stringify(randomArr) === JSON.stringify(arr[i])) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Эта функция "рисует" случайный квадрат в случае, если предидущая функция вернула false;
+      function fillRandomRect() {
+        do {
+          randomArr = getRandom();
+        } while (isRectOnSnake());
+        rectRandom(...randomArr);
+      }
+
+      fillRandomRect(arr, randomArr);
+
+      // Это главная функция, которая перемещает змейку
+
+      function step() {
+        let a = coordinates(arr);
+        let x = a[0];
+        let y = a[1];
+        // проверяем: сдедующий шаг - стена?
+        if (x < 0 || y < 0) {
+          $(".message").show();
+          record();
+        }
+        if (x >= 16 || y >= 16) {
+          $(".message").show();
+          record();
+        }
+        // Проверяем кусает ли змейка сама себя:
+        bite(x, y);
+        // Проверяем в каком направлении мы двигаемся:
+        if (x === arr[arr.length - 2][0] && y === arr[arr.length - 2][1]) {
+          console.log("Движение задним ходом недопустимо");
+        }
+        // Проверяем наличие случайного кубика
+        if (x === randomArr[0] && y === randomArr[1]) {
+          console.log("YES!");
+          eating(...arr[0]);
+        }
+        // Перемещаем змейку на шаг вперед
+        move(x, y);
+      }
+
+      // ----------------------Events------------------------------------------
+      // Это событие обновляет страницу после нажатия на кнопку ".restart"
+      $(".restart").click(function (event) {
+        document.location.reload();
+      });
+      $(".start").click(function (event) {
+        $(".start-game").hide();
+        // -------------------------------- ЗДЕСЬ МОЖНО ПОМЕНЯТЬ СКОРОСТЬ! --------------------
+
+        // Нужно изменить число указанное через запятую в скобках ниже (там где step) и сохранить документ
+        // 100 -  змейка будет быстро бегать; 200- чуть медленне и так дальше
+        // Чем больше число, тем медленне бегает змейка
+
+        setInterval(step, 200);
+      });
+      // --------------------------------!!!!----------------------------------------------------
+
+      // События по нажатию клавиш со стрелками
+      $("body").keyup(function (event) {
+        if (event.keyCode == 37) {
+          console.log("left");
+          direction = "left";
+        }
+
+        if (event.keyCode == 38) {
+          console.log("up");
+          direction = "up";
+        }
+        if (event.keyCode == 39) {
+          console.log("right");
+          direction = "right";
+        }
+
+        if (event.keyCode == 40) {
+          console.log("down");
+          direction = "down";
+        }
+      });
+
+      rect(...arr[0]);
+      rect(...arr[1]);
+      rect(...arr[2]);
+      // rect(2, 0);
+      // rect(2, 1);
+      // rect(2, 2);
+    </script>
+  </body>
+</html>

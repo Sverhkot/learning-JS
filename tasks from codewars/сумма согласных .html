@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+	<script>
+		function solve(s) {
+			let i = 0;
+			let maxElem = 0;
+			let sum = 0;
+			let length = s.length;
+			while (i < length) {
+				 let a = s.charCodeAt(i);
+				 a = a - 96; 
+				if ((s[i] !== 'a') && (s[i] !== 'e') && (s[i] !== 'i') && (s[i] !== 'o') && (s[i] !== 'u')) {
+					sum = sum + a;
+					// max.push(sum);
+					if (sum > maxElem) {
+					
+            maxElem = sum;
+					}
+				} else {
+				   sum = 0;
+				  }
+				i = i + 1;
+			}
+			// max.sort((a, b) => { 
+      //   return b - a;
+      // });
+			return maxElem;
+		}
+
+		console.log(solve("zzodiacs"))
+	</script>
+</body>
+
+</html>

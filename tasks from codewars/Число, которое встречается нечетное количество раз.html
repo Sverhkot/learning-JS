@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      function findOdd(a) {
+        let i = 0;
+        let n = a.length;
+        let sum = 0;
+        let elem = 0;
+        while (i < n) {
+          while (n > 0) {
+            if (a[i] === a[n - 1]) {
+              sum = sum + 1;
+            }
+            n = n - 1;
+          }
+
+          if (sum % 2 !== 0) {
+            return (elem = a[i]);
+          }
+          n = a.length;
+          sum = 0;
+          i = i + 1;
+        }
+      }
+      console.log(findOdd([1, 1, 5, 1, 1, 1]));
+    </script>
+  </body>
+</html>

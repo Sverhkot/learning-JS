@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>jQuery</title>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        // у этой конструкции есть более короткая форма
+        // $(function() {});
+        // по сути это одно и то же
+
+        // СЕЛЕКТОРЫ
+
+        // базовые селекторы (#id, tagName, .class)
+        // пример
+        $("p").css("border", "3px solid red");
+        // также мы можем комбинировать имя тега с классом
+        $("p.blue").css("border", "3px solid blue");
+        // селекторы взаимодействия
+        // можно обратиться к родительскоьу элементу написав такую конструкцию .parent()
+        $("h2").parent().css("border", "3px solid green");
+        // так же можно применять такие простые фильтры с использованием псевдоклассов (:first, :last, even, odd, eq)
+        // если указать :first, то это выделит первый элемент p
+        $("p:first").css("border", "3px solid purple");
+        // выделит последний элемент p
+        $("p:last").css("border", "3px solid yellow");
+        // можно обратиться ко всем нечетным при помощи even
+        $("p:even").css("border", "3px solid black");
+        // или все четные при помощи odd
+        $("p:odd").css("border", "3px solid red");
+        // также можно использовать обращение к какому-то конкретному пункту
+        $("p:eq(0)").css("border", "3px solid pink");
+        // также можно фильтровать элементы по их содержимому (:has, :parent, :empty)
+        // например мы можем обратиться к элементу, который содержит в себе элемент span
+        $("h2:has(span)").css("color", "brown");
+        // можно выделить все, которые содержат в себе что-то
+        $("li:parent()").css("color", "blue");
+        // если требуется выделить пустой элемент, то можно воспользоваться :empty
+        $("li:empty").css("color", "orange");
+        // также есть фильтры по атрибутам (name ~= value)
+        // мы можем определять по атрибутам, например, какие-то элементы форм или ссылки или картинки
+        // например мы можем выделить ссылку
+        $(
+          "a[href='https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify']"
+        ).css("border", "3px solid red");
+
+        // или все ссылки, кроме той которая содержит такой адрес
+        $(
+          "a[href!='https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify']"
+        ).css("border", "3px solid pink");
+        // можно также выделить те элементы, которые начинаются с https
+        $("a[href^='https']").css("border", "3px solid green");
+        // также можно выделить те ссылки, которые заканчиваются на .co, например
+        $("a[href$='co']").css("border", "3px solid yellow");
+      });
+    </script>
+    <div id="id">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li></li>
+      </ul>
+      <a
+        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"
+      >
+        link1</a
+      >
+      <a href="https://coolors.co"> link2</a>
+      <a href="coolors.co"> link2</a>
+    </div>
+    <p class="blue">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    </p>
+    <p>Itaque atque officiis esse similique, eos consectetur quos voluptas</p>
+    <p>
+      maiores necessitatibus accusantium deserunt a sint magnam doloremque,
+      perferendis assumenda. Temporibus, nesciunt quia.
+    </p>
+    <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
+    <h2><span>Sit amet consectetur adipisicing elit.</span></h2>
+  </body>
+</html>

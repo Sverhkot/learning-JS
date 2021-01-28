@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+<body>
+	<p id="out"></p>
+<script>
+
+	let out = document.getElementById("out");
+	let i = 100;
+
+ while ( i<= 999 ) {
+   a = Math.floor(i / 100);
+   b = Math.floor(i / 10);
+   b = b % 10;
+   c = i % 10;
+
+   if (b != 0 && c != 0) {
+     x = a*b*c;
+     if ( i % x === 0 ) {
+       out.innerHTML = out.innerHTML + i + "<br>";
+     }
+   }
+   i = i + 1;
+ }
+
+
+</script>
+
+</body>
+</html>

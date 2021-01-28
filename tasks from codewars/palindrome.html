@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      function polin(word) {
+        let i = 0;
+        let n = word.length;
+        let p = true;
+        while (i < n) {
+          if (word[i] !== word[n - 1]) {
+            p = false;
+          }
+
+          i = i + 1;
+          n = n - 1;
+        }
+        if (p) {
+          document.write('палиндром / ');
+        } else {
+          document.write('не палиндром / ');
+        }
+      }
+
+      polin('123123');
+      polin('asd2dsa');
+    </script>
+  </body>
+</html>

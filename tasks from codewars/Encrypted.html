@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Зашифрованная строка</title>
+  </head>
+  <body>
+    <script>
+      function simpleTransposition(text) {
+        let row1 = [];
+        let row2 = [];
+        for (let i = 0; i < text.length; i++) {
+          i % 2 === 0 ? row1.push(text[i]) : row2.push(text[i]);
+        }
+        return row1.concat(row2).join('');
+      }
+      console.log(simpleTransposition('Sample text'));
+
+      //Решение этой задачи при помощи replace:
+
+      // function simpleTransposition(text) {
+      //   let r1 = text.replace(/./g, (c, i) => (i % 2 ? '' : c));
+      //   let r2 = text.replace(/./g, (c, i) => (!(i % 2) ? '' : c));
+      //   return r1+r2;
+      // }
+
+      // Объяснение:
+      // (/./g) - регулярка,которая разбивает строку на каждый символ строки,
+      // (c, i) - функция, которая принимает два параметра:  с - каждый элемент строки(полученный при помощи регулярки), i - индексж
+      // (i % 2 ? '' : c) - эта конструкция - условие, где (i % 2 ?) - это if,
+      // ('' : c) - действие для true : условие для else.
+      // В этом способе переменные r1 и r2 хранят символы строки, у которых четные и не четные индексы
+      // return возвращает сложенные две строки вместе
+      // Таким образом получаем зашифрованную фразу: "Sml etapetx"
+      console.log(simpleTransposition('Sample text'));
+    </script>
+  </body>
+</html>

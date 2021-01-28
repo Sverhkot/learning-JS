@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script> // в этом задании нужно сравнить два массива и вычесть из массива а[i] те элементы массива, которые есть в массиве в[j].
+  
+    function arrayDiff(a, b) {
+      let i = 0;
+      let j = 0;
+      let d = [];
+      let same = false;
+      let N = a.length;
+      let M = b.length;
+      while (i < N) {
+          j = 0;
+          while ( j < M) {
+              if (b[j] === a[i]) {
+                  same = true;
+              } 
+              j = j + 1; 
+          }
+          if (same === false) {
+              d.push(a[i])
+          }
+          i = i + 1;
+          same = false;
+      }
+
+      return d;
+    }
+
+
+    console.log(arrayDiff([7, 8, 9, 0, 5000, 4], [-2, 0, 5000, ]))
+
+  </script>
+</body>
+
+</html>
+

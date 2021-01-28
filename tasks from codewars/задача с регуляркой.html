@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <script>
+      // function fileName(str) {
+      //   let i = 0;
+      //   let newArr = [];
+      //   let cut = str.split('_');
+      //   cut.shift(0);
+      //   cut = cut.join('_');
+      //   let n = cut.length;
+      //   let x;
+
+      //   while (i < n) {
+      //     if (cut[i] !== '.') {
+      //       newArr.push(cut[i]);
+      //     }
+      //     x = newArr.indexOf(cut[i]);
+      //     if (cut[i] === '.') {
+      //       if (x === -1) {
+      //         newArr.push(cut[i]);
+      //       } else {
+      //         return newArr.join('');
+      //       }
+      //     }
+
+      //     i = i + 1;
+      //   }
+
+      //   return newArr;
+      // }
+      class FileNameExtractor {
+        static extractFileName(str) {
+          return str.match(/^\d*\_([\w\-]+\.\w+).*/)[1];
+        }
+      }
+      console.log(
+        fileName('1231231223123131_FILE_NAME.EXTENSION.OTHEREXTENSION'),
+      );
+    </script>
+  </body>
+</html>
